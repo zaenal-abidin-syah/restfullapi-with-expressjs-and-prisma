@@ -13,8 +13,6 @@ const prisma = new PrismaClient();
 // midleware json
 app.use(express.json());
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.get("/users", async (req, res) => {
   const users = await prisma.users.findMany();
   res.status(200).send(users);
@@ -58,7 +56,6 @@ app.post("/users", async (req, res) => {
     },
   });
   res.status(201).send({
-    data: user,
     message: "create User success",
   });
 });
@@ -100,7 +97,6 @@ app.put("/users/:id", async (req, res) => {
     },
   });
   res.status(200).send({
-    data: user,
     message: "update user success",
   });
 });
@@ -133,7 +129,6 @@ app.patch("/users/:id", async (req, res) => {
   });
 
   res.status(200).send({
-    data: user,
     message: "update user success",
   });
 });
@@ -156,10 +151,11 @@ app.delete("/users/:id", async (req, res) => {
     },
   });
   res.status(200).send({
-    data: user,
     message: "delete user success",
   });
 });
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
   console.log("Express Js Running on : http://localhost:" + PORT);
