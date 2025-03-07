@@ -1,0 +1,30 @@
+{
+  "name": "restfullapi-with-expressjs-and-prisma",
+  "description": "Membuat Rest-API sederhana menggunakan Express Js, serta Dokumentasi API dengan Swagger OpenAPI 3.0",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaenal-abidin-syah/restfullapi-with-expressjs-and-prisma.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaenal-abidin-syah/restfullapi-with-expressjs-and-prisma/issues"
+  },
+  "homepage": "https://github.com/zaenal-abidin-syah/restfullapi-with-expressjs-and-prisma#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "prisma": "^6.4.1"
+  }
+}
