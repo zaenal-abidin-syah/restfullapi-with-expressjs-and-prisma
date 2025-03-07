@@ -17,7 +17,7 @@
   },
   "servers": [
     {
-      "url": "https://users-api.sgp.dom.my.id",
+      "url": "https://api.zaens.my.id",
       "description": "Users Restfull Api server"
     }
   ],
@@ -66,7 +66,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Success create Users",
             "content": {
               "application/json": {
@@ -77,7 +77,7 @@
                   "contoh1": {
                     "description": "Success Create Users",
                     "value": {
-                      "message": "add user successfully"
+                      "message": "create User success"
                     }
                   }
                 }
@@ -95,7 +95,7 @@
                   "contoh1": {
                     "description": "Failed Create Users",
                     "value": {
-                      "message": "please, fill username, email and phone_number!"
+                      "message": "Some fields are missing!!"
                     }
                   }
                 }
@@ -155,6 +155,203 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update full User by User Id",
+        "description": "Update full user by user id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UsersId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success update full users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "success update user",
+                    "value": {
+                      "message": "update user success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "some field missing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "missing": {
+                    "description": "some field missing",
+                    "value": {
+                      "message": "Some fields are missing!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "user id not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "idNotFound": {
+                    "description": "user id not found",
+                    "value": {
+                      "message": "user not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Update Separately User by User Id",
+        "description": "Update Separately user by user id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UsersId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success update Separately users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "success update user",
+                    "value": {
+                      "message": "update user success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "user id not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "idNotFound": {
+                    "description": "user id not found",
+                    "value": {
+                      "message": "user not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete User by User Id",
+        "description": "Delete user by user id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UsersId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success Delete users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "success delete user",
+                    "value": {
+                      "message": "delete user success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "user id not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "idNotFound": {
+                    "description": "user id not found",
+                    "value": {
+                      "message": "user not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -190,6 +387,9 @@
           "id": {
             "type": "string"
           },
+          "name": {
+            "type": "string"
+          },
           "username": {
             "type": "string"
           },
@@ -210,6 +410,11 @@
       "CreateUsers": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "minLength": 4
+          },
           "username": {
             "type": "string",
             "required": true,
@@ -234,12 +439,14 @@
         "value": [
           {
             "id": 99,
+            "name": "contoh1",
             "username": "contoh1",
             "email": "contoh1@email.com",
             "phone_number": "083265545655"
           },
           {
             "id": 100,
+            "name": "contoh2",
             "username": "contoh2",
             "email": "contoh2@email.com",
             "phone_number": "083475348435"
@@ -247,9 +454,10 @@
         ]
       },
       "successGetUser": {
-        "description": "success get all users",
+        "description": "success get user",
         "value": {
           "id": 99,
+          "name": "contoh1",
           "username": "contoh1",
           "email": "contoh1@email.com",
           "phone_number": "083265545655"
@@ -258,6 +466,7 @@
       "contoh1": {
         "description": "create users contoh1",
         "value": {
+          "name": "name1",
           "username": "username1",
           "email": "username1@email.com",
           "phone_number": "088946283732"
