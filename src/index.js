@@ -10,10 +10,6 @@ const prisma = new PrismaClient();
 // midleware json
 app.use(express.json());
 
-app.get("/api", (req, res) => {
-  res.send("Hello world!!");
-});
-
 app.get("/users", async (req, res) => {
   const users = await prisma.users.findMany();
   res.status(200).send(users);
