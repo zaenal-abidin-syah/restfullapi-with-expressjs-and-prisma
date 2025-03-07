@@ -2,7 +2,7 @@
   "name": "restfullapi-with-expressjs-and-prisma",
   "description": "Membuat Rest-API sederhana menggunakan Express Js, serta Dokumentasi API dengan Swagger OpenAPI 3.0",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
