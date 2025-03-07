@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
 dotenv.config();
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
@@ -9,6 +12,8 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 // midleware json
 app.use(express.json());
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/users", async (req, res) => {
   const users = await prisma.users.findMany();
