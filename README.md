@@ -35,3 +35,13 @@ npm install -g nodemon
 ```
 nodemon .
 ```
+
+# create model on prisma/schema.prisma
+
+```
+npx prisma db push
+```
+
+```
+npx prisma generate
+```
