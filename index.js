@@ -9,6 +9,14 @@ dotenv.config();
 const PORT = process.env.PORT;
 const { PrismaClient } = require("@prisma/client");
 
+const cors = require("cors");
+app.use(cors());
+
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.url} from ${req.ip}`);
+  next();
+});
+
 const prisma = new PrismaClient();
 // midleware json
 app.use(express.json());

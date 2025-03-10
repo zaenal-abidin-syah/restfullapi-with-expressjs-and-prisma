@@ -112,7 +112,7 @@
         "description": "Get user by user id",
         "parameters": [
           {
-            "$ref": "#/components/parameters/UsersId"
+            "$ref": "#/components/parameters/userId"
           }
         ],
         "responses": {
@@ -162,7 +162,7 @@
         "description": "Update full user by user id",
         "parameters": [
           {
-            "$ref": "#/components/parameters/UsersId"
+            "$ref": "#/components/parameters/userId"
           }
         ],
         "responses": {
@@ -301,7 +301,7 @@
         "description": "Delete user by user id",
         "parameters": [
           {
-            "$ref": "#/components/parameters/UsersId"
+            "$ref": "#/components/parameters/userId"
           }
         ],
         "responses": {
@@ -357,8 +357,8 @@
   },
   "components": {
     "parameters": {
-      "UsersId": {
-        "name": "usersId",
+      "userId": {
+        "name": "userId",
         "in": "path",
         "required": true,
         "description": "User id for get user",
