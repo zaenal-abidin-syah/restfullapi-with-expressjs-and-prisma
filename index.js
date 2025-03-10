@@ -155,7 +155,7 @@ app.delete("/users/:id", async (req, res) => {
   });
 });
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
   console.log("Express Js Running on : http://localhost:" + PORT);
